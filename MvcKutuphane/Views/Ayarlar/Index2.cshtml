@@ -1,0 +1,68 @@
+﻿@using MvcKutuphane.Models.Entity
+@model List<TBLADMIN>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Kulanıcı</th>
+        <th>Yetki</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.KULLANICI</td>
+            <td>@item.YETKI</td>
+            <td>
+                <a class="btn btn-info btn-sm" href="/Ayarlar/AdminGuncelle/@item.Id">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Düzenle
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger btn-sm" href="/Ayarlar/AdminSil/@item.Id">
+                    <i class="fas fa-trash">
+                    </i>
+                    Sil
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Admin Ekle</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Admin Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Ayarlar/YeniAdmin/">
+                <div class="modal-body">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" name="KULLANICI" class="form-control" />
+                    <br />
+                    <label>Şifre</label>
+                    <input type="text" name="SIFRE" class="form-control" />
+                    <br />
+                    <label>Yetki</label>
+                    <input type="text" name="YETKI" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 10px 14px 10px 10px;
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #0094ff;
+                }
+
+        .main {
+            margin-left: 240px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a href="/istatistik/Index/"><i class="fa fa-fw fa-home"></i> Ana Sayfa</a>
+        <a href="/Kategori/Index/"><i class="fa fa-fw fa-list"></i> Kategori</a>
+        <a href="/Kitap/Index/"><i class="fa fa-fw fa-book"></i> Kitaplar</a>
+        <a href="/Yazar/Index/"><i class="fa fa-fw  fa-envelope"></i> Yazarlar</a>
+        <a href="/Uyeler/Index/"><i class="fa fa-fw fa-user"></i> Üyeler</a>
+        <a href="/Personel/Index/"><i class="fa fa-fw fa-user"></i> Personeller</a>
+        @if (User.IsInRole("A"))
+        {
+        <a href="/Odunc/OduncVer/"><i class="fa fa-fw fa-arrow-right"></i> Ödünç Kitap Ver</a>
+        <a href="/Odunc/Index/"><i class="fa fa-fw fa-arrow-left"></i> Ödünç Kitap Al</a>
+        }
+        <a href="/istatistik/Index/"><i class="fa fa-fw fa-signal"></i> İstatislikler</a>
+        <a href="/Duyuru/Index/"><i class="fa fa-fw fa-bullhorn"></i> Duyurular</a>
+        <a href="/islem/Index/"><i class="fa fa-fw fa-cogs"></i> İşlemler</a>
+        <a href="/istatistik/Hava/"><i class="fa fa-fw fa-cloud"></i> Hava Raporu</a>
+        <a href="/istatistik/HavaKart/"><i class="fa fa-fw fa-table"></i> Hava Kartları</a>
+        <a href="/istatistik/Galeri/"><i class="fa fa-fw fa-picture-o"></i> Galeri</a>
+        <a href="/istatistik/LinqKart/"><i class="fa fa-fw fa-th"></i> Link Kartları</a>
+        <a href="/vitrin/Index/"><i class="fa fa-fw fa-shopping-cart"></i> Vitrin</a>
+        @*<a href="#contact"><i class="fa fa-fw fa-envelope"></i> İletişim</a>*@
+        <a href="/Grafik/Index/"><i class="fa fa-fw fa-area-chart"></i>Grafikler </a>
+        <a href="/Ayarlar/Index2/"><i class="fa fa-fw fa-cog"></i> Ayarlar</a>
+        <a href="/Panelim/LogOut/"><i class="fa fa-fw fa-car"></i> Çıkış</a>
+
+    </div>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+</body>
+</html> 
